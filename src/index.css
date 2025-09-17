@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* BusTrack Live Design System - Transit-inspired theme
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Transit Blue Primary Palette */
+    --background: 210 20% 98%;
+    --foreground: 220 15% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 20%;
+
+    /* Transit Blue - Professional and Trustworthy */
+    --primary: 214 84% 46%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 214 84% 40%;
+
+    /* Transit Green - Active/Go State */
+    --secondary: 142 70% 45%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 142 70% 40%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 220 15% 50%;
+
+    --accent: 45 100% 55%;
+    --accent-foreground: 220 15% 20%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 20% 90%;
+    --input: 210 20% 95%;
+    --ring: 214 84% 46%;
+
+    --radius: 0.75rem;
+
+    /* Transit-specific colors */
+    --transit-warning: 38 95% 60%;
+    --transit-info: 200 85% 50%;
+    --transit-success: 142 70% 45%;
+    --transit-route-1: 214 84% 46%;
+    --transit-route-2: 142 70% 45%;
+    --transit-route-3: 38 95% 60%;
+    --transit-route-4: 285 85% 55%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(214 84% 46%), hsl(214 84% 40%));
+    --gradient-secondary: linear-gradient(135deg, hsl(142 70% 45%), hsl(142 70% 40%));
+    --gradient-hero: linear-gradient(135deg, hsl(214 84% 46%) 0%, hsl(200 85% 50%) 100%);
+
+    /* Shadows */
+    --shadow-transit: 0 4px 20px hsl(214 84% 46% / 0.15);
+    --shadow-card: 0 2px 12px hsl(220 15% 20% / 0.08);
+    --shadow-elevated: 0 8px 32px hsl(220 15% 20% / 0.12);
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 210 20% 95%;
+
+    --card: 220 25% 10%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 25% 10%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 214 84% 55%;
+    --primary-foreground: 220 25% 8%;
+    --primary-hover: 214 84% 60%;
+
+    --secondary: 142 70% 50%;
+    --secondary-foreground: 220 25% 8%;
+    --secondary-hover: 142 70% 55%;
+
+    --muted: 220 25% 15%;
+    --muted-foreground: 220 15% 65%;
+
+    --accent: 45 100% 60%;
+    --accent-foreground: 220 25% 8%;
+
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 210 20% 95%;
+
+    --border: 220 25% 18%;
+    --input: 220 25% 15%;
+    --ring: 214 84% 55%;
+
+    --transit-warning: 38 95% 65%;
+    --transit-info: 200 85% 60%;
+    --transit-success: 142 70% 50%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(214 84% 55%), hsl(214 84% 50%));
+    --gradient-secondary: linear-gradient(135deg, hsl(142 70% 50%), hsl(142 70% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(214 84% 55%) 0%, hsl(200 85% 60%) 100%);
+
+    --shadow-transit: 0 4px 20px hsl(214 84% 55% / 0.25);
+    --shadow-card: 0 2px 12px hsl(0 0% 0% / 0.2);
+    --shadow-elevated: 0 8px 32px hsl(0 0% 0% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+  
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+  
+  .glass-effect-dark {
+    @apply bg-black/10 backdrop-blur-md border border-black/20;
+  }
+
+  .ripple-effect {
+    @apply relative overflow-hidden;
+  }
+  
+  .ripple-effect::before {
+    content: '';
+    @apply absolute inset-0 bg-white/30 rounded-full scale-0 opacity-0 pointer-events-none;
+    transition: transform 0.6s, opacity 0.6s;
+  }
+  
+  .ripple-effect:active::before {
+    @apply scale-100 opacity-100;
+    animation: ripple 0.6s linear;
+  }
+}
